@@ -125,6 +125,7 @@ namespace nLayers
             this.comboBox_Attribute.Name = "comboBox_Attribute";
             this.comboBox_Attribute.Size = new System.Drawing.Size(142, 24);
             this.comboBox_Attribute.TabIndex = 3;
+            this.comboBox_Attribute.SelectedIndex = 2;
             // 
             // button_search
             // 
@@ -221,7 +222,7 @@ namespace nLayers
             // 
             // button_update
             // 
-            this.button_update.Location = new System.Drawing.Point(788, 84);
+            this.button_update.Location = new System.Drawing.Point(787, 85);
             this.button_update.Name = "button_update";
             this.button_update.Size = new System.Drawing.Size(136, 23);
             this.button_update.TabIndex = 10;
@@ -231,7 +232,7 @@ namespace nLayers
             // 
             // button_delete
             // 
-            this.button_delete.Location = new System.Drawing.Point(787, 130);
+            this.button_delete.Location = new System.Drawing.Point(787, 279);
             this.button_delete.Name = "button_delete";
             this.button_delete.Size = new System.Drawing.Size(136, 23);
             this.button_delete.TabIndex = 9;
