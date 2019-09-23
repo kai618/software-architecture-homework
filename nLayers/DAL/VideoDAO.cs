@@ -24,20 +24,19 @@ namespace nLayers.DAL
             switch (attribute)
             {
                 case "id":
-                    videos =
-                        (from video in _db.Videos where video.id.ToString().Contains(keyword) select video).ToList();
+                    videos = _db.Videos.Where(v => v.id.ToString().Contains(keyword)).ToList();
                     break;
                 case "uploader":
-                    videos = (from video in _db.Videos where video.uploader.Contains(keyword) select video).ToList();
+                    videos = _db.Videos.Where(v => v.uploader.Contains(keyword)).ToList();
                     break;
                 case "title":
-                    videos = (from video in _db.Videos where video.title.Contains(keyword) select video).ToList();
+                    videos = _db.Videos.Where(v => v.title.Contains(keyword)).ToList();
                     break;
                 case "tags":
-                    videos = (from video in _db.Videos where video.tags.Contains(keyword) select video).ToList();
+                    videos = _db.Videos.Where(v => v.tags.Contains(keyword)).ToList();
                     break;
                 case "description":
-                    videos = (from video in _db.Videos where video.description.Contains(keyword) select video).ToList();
+                    videos = _db.Videos.Where(v => v.description.Contains(keyword)).ToList();
                     break;
                 default:
                     videos = null;
