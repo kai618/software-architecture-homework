@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using nLayers.BLL;
-using nLayers.DTO;
+using nLayers.DTO.TSQL;
 
 namespace nLayers
 {

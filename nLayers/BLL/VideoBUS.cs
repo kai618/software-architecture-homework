@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using nLayers.DAL;
-using nLayers.DTO;
+using nLayers.DTO.TSQL;
 
 namespace nLayers.BLL
 {

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="BLL\VideoBUS.cs" />
     <Compile Include="DAL\VideoDAO.cs" />
+    <Compile Include="DTO\TSQL\Video.cs" />
     <Compile Include="DTO\VideoManagerLINQ.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
