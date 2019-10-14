@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="LinqDb">
+  <DataContextMoniker Name="/LinqDbDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a3ebd4c9-dd64-492d-bbd0-8909453d3c77" absoluteBounds="2.75, 1.125, 2, 2.1833995507160822">
+      <DataClassMoniker Name="/LinqDbDataContext/Video" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eb5d24d6-7956-495b-93a3-09d7834b0d46" absoluteBounds="2.765, 1.585, 1.9700000000000002, 1.6233995507160821" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
