@@ -1,13 +1,12 @@
 ﻿using AppShared;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace W04_AppClient
 {
     public partial class VideoManagerForm : Form
     {
-        private const string Uri = "tcp://192.168.1.35:6969/xxx";
+        private const string Uri = "tcp://10.104.18.221:6969/xxx";
 
         public VideoManagerForm()
         {

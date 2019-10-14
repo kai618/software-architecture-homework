@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W04_AppServer", "W04_AppSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W04_AppClient", "W04_AppClient\W04_AppClient.csproj", "{06E6D492-A1F2-4F74-B561-3B6805D93E4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W06_AppService", "W06_AppService\W06_AppService.csproj", "{C56BCC96-C3B6-4521-941A-A2D028833029}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{06E6D492-A1F2-4F74-B561-3B6805D93E4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06E6D492-A1F2-4F74-B561-3B6805D93E4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06E6D492-A1F2-4F74-B561-3B6805D93E4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C56BCC96-C3B6-4521-941A-A2D028833029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C56BCC96-C3B6-4521-941A-A2D028833029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C56BCC96-C3B6-4521-941A-A2D028833029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C56BCC96-C3B6-4521-941A-A2D028833029}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
