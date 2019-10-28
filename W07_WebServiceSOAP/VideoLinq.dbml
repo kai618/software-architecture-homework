@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="videodb" Class="VideoLinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=den1.mssql7.gear.host;Initial Catalog=videodb;Persist Security Info=True;User ID=videodb" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="videodbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Video" Member="Videos">
+    <Type Name="Video">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="uploader" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="tags" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="url" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="timestamp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,12 +1,13 @@
-﻿using AppShared;
-using System;
+﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using W07_WinFormsClient.videosa;
 
-namespace W04_AppClient
+namespace W07_WinFormsClient
 {
     public partial class VideoManagerForm : Form
     {
-        private const string Uri = "tcp://10.104.20.115:6969/xxx";
+        private readonly VideoService _service = new VideoService();
 
         public VideoManagerForm()
         {
@@ -15,9 +16,9 @@ namespace W04_AppClient
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var videos = ((IVideoBUS) Activator.GetObject(typeof(IVideoBUS), Uri)).GetAll();
+            var videos = _service.GetAll().ToList();
             videoGridView.DataSource = videos;
-        } 
+        }
 
         private void VideoGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -33,17 +34,14 @@ namespace W04_AppClient
 
         private void Button_search_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBox_keyword.Text))
-            {
-                var videos = ((IVideoBUS) Activator.GetObject(typeof(IVideoBUS), Uri)).Search(
-                    textBox_keyword.Text.Trim(),
-                    GetAttribute(comboBox_Attribute.SelectedIndex));
-
-                videoGridView.DataSource = videos;
-            }
+            if (string.IsNullOrEmpty(textBox_keyword.Text)) return;
+            var videos = _service.Search(
+                textBox_keyword.Text.Trim(),
+                GetAttribute(comboBox_Attribute.SelectedIndex));
+            videoGridView.DataSource = videos;
         }
 
-        private string GetAttribute(int index)
+        private static string GetAttribute(int index)
         {
             switch (index)
             {
@@ -62,7 +60,7 @@ namespace W04_AppClient
 
             Enabled = false;
 
-            var status = ((IVideoBUS) Activator.GetObject(typeof(IVideoBUS), Uri)).Add(new Video
+            var status = _service.Add(new Video
             {
                 uploader = textBox_uploader.Text,
                 title = textBox_title.Text,
@@ -74,7 +72,7 @@ namespace W04_AppClient
 
             if (status)
             {
-                videoGridView.DataSource = ((IVideoBUS) Activator.GetObject(typeof(IVideoBUS), Uri)).GetAll();
+                videoGridView.DataSource = _service.GetAll();
                 MessageBox.Show(@"Added!".PadLeft(18, ' '), @"Success");
             }
 
@@ -86,7 +84,7 @@ namespace W04_AppClient
             if (!CheckValidData()) return;
 
             Enabled = false;
-            var status = ((IVideoBUS) Activator.GetObject(typeof(IVideoBUS), Uri)).Update(new Video
+            var status = _service.Update(new Video
             {
                 id = int.Parse(textBox_id.Text),
                 uploader = textBox_uploader.Text,
@@ -99,7 +97,7 @@ namespace W04_AppClient
 
             if (status)
             {
-                videoGridView.DataSource = ((IVideoBUS) Activator.GetObject(typeof(IVideoBUS), Uri)).GetAll();
+                videoGridView.DataSource = _service.GetAll();
                 MessageBox.Show(@"Updated!".PadLeft(18, ' '), @"Success");
             }
 
@@ -116,11 +114,12 @@ namespace W04_AppClient
                 MessageBox.Show(@"Are you sure?".PadLeft(38, ' '), @"Confirmation", MessageBoxButtons.YesNo);
             if (userSelect == DialogResult.Yes)
             {
-                var status = ((IVideoBUS) Activator.GetObject(typeof(IVideoBUS), Uri)).Delete(int.Parse(textBox_id.Text));
+                var status =
+                    _service.Delete(int.Parse(textBox_id.Text));
 
                 if (status)
                 {
-                    videoGridView.DataSource = ((IVideoBUS) Activator.GetObject(typeof(IVideoBUS), Uri)).GetAll();
+                    videoGridView.DataSource = _service.GetAll();
                     MessageBox.Show(@"Deleted!".PadLeft(18, ' '), @"Success");
                 }
             }

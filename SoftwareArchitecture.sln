@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W04_AppClient", "W04_AppCli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W06_AppService", "W06_AppService\W06_AppService.csproj", "{C56BCC96-C3B6-4521-941A-A2D028833029}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W07_WebServiceSOAP", "W07_WebServiceSOAP\W07_WebServiceSOAP.csproj", "{4F071ABE-C782-470C-90DF-CA71232CE58A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W07_WinFormsClient", "W07_WinFormsClient\W07_WinFormsClient.csproj", "{54258CE2-157E-44DF-9534-DF4EDA148BC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{C56BCC96-C3B6-4521-941A-A2D028833029}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C56BCC96-C3B6-4521-941A-A2D028833029}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C56BCC96-C3B6-4521-941A-A2D028833029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F071ABE-C782-470C-90DF-CA71232CE58A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F071ABE-C782-470C-90DF-CA71232CE58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F071ABE-C782-470C-90DF-CA71232CE58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F071ABE-C782-470C-90DF-CA71232CE58A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54258CE2-157E-44DF-9534-DF4EDA148BC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54258CE2-157E-44DF-9534-DF4EDA148BC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54258CE2-157E-44DF-9534-DF4EDA148BC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54258CE2-157E-44DF-9534-DF4EDA148BC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
