@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W07_WinFormsClient", "W07_W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W10_RESTfulService", "W10_RESTfulService\W10_RESTfulService.csproj", "{C5373670-F24A-45B0-96AC-274078743AD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W11_RESTfulClient", "W11_RESTfulClient\W11_RESTfulClient.csproj", "{E1595792-DC96-4E85-A96F-E05041EFA7E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{C5373670-F24A-45B0-96AC-274078743AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5373670-F24A-45B0-96AC-274078743AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5373670-F24A-45B0-96AC-274078743AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1595792-DC96-4E85-A96F-E05041EFA7E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1595792-DC96-4E85-A96F-E05041EFA7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1595792-DC96-4E85-A96F-E05041EFA7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1595792-DC96-4E85-A96F-E05041EFA7E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

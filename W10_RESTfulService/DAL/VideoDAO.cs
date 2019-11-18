@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Web;
 using W10_RESTfulService.Models;
 
 namespace W10_RESTfulService.DAL
