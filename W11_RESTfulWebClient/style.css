@@ -1,0 +1,61 @@
+body {
+  font-family: sans-serif;
+}
+
+#videolist {
+  font-size: 17;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 1200px;
+}
+
+#videolist tr:first-of-type {
+  color: white;
+  background-color: black;
+}
+
+#videolist td {
+  padding: 3px 5px;
+  cursor: pointer;
+  user-select: none;
+}
+#videolist tr:not(:first-of-type):hover {
+  background-color: skyblue;
+}
+
+input {
+  font-size: 17;
+}
+
+#loader-wrapper {
+  height: 100%;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* https://www.w3schools.com/howto/howto_css_loader.asp */
+.loader {
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

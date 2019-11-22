@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body onload="page_Load()">
+    <h2>VIDEO LIST</h2>
+    <input type="text" id="txtKeyword" placeholder="Keyword" size="50" />
+    <input type="button" value="SEARCH" onclick="btnSearch_Click()" />
+    <br /><br />
+    <table id="videolist" border="1"></table>
+    <br />
+    <h2>VIDEO DETAILS</h2>
+    <table>
+      <tr>
+        <td>Id</td>
+        <td><input type="text" id="video-id" readonly="true" readonly /></td>
+      </tr>
+      <tr>
+        <td>Uploader</td>
+        <td><input type="text" id="video-uploader" size="50" /></td>
+      </tr>
+      <tr>
+        <td>Title</td>
+        <td><input type="text" id="video-title" size="50" /></td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td><input type="text" id="video-description" size="50" /></td>
+      </tr>
+      <tr>
+        <td>Tags</td>
+        <td><input type="text" id="video-tags" size="50" /></td>
+      </tr>
+      <tr>
+        <td>URL</td>
+        <td><input type="text" id="video-url" size="50" /></td>
+      </tr>
+      <tr>
+        <td>Timestamp</td>
+        <td><input type="text" id="video-timestamp" size="50" /></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="button" value="ADD NEW" onclick="btnAdd_Click()" />
+          <input type="button" value="UPDATE" onclick="btnUpdate_Click()" />
+          <input type="button" value="DELETE" onclick="btnDelete_Click()" />
+        </td>
+      </tr>
+    </table>
+
+    <div id="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
