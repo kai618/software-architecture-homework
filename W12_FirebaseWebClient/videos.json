@@ -1,0 +1,40 @@
+{
+  "videos": [
+    {
+      "id": 1,
+      "uploader": "Kai Pham",
+      "title": "Avengers Endgame",
+      "description": "Whatever it takes. Watch the brand-new trailer for Marvel Studios Avengers: Endgame. In theaters April 26.",
+      "tags": "avengers marvel thanos",
+      "url": "https://www.youtube.com/watch?v=TcMBFSGVi1c&t=2s",
+      "timestamp": 1569128881
+    },
+    {
+      "id": 2,
+      "uploader": "Tiger Productions",
+      "title": "Cats are so funny",
+      "description": "Cats are simply the funniest and most hilarious pets, they make us laugh all the time!",
+      "tags": "cat cats kitten",
+      "url": "https://www.youtube.com/watch?v=5dsGWM5XGdg",
+      "timestamp": 1569129308
+    },
+    {
+      "id": 3,
+      "uploader": "Favorite Videos",
+      "title": "Friends - Joey does not share food",
+      "description": "Friends Season 10 Episode 9 \"The One with the Birth Mother\".",
+      "tags": "friends joey food",
+      "url": "https://www.youtube.com/watch?v=96DDkJMZd-Q",
+      "timestamp": 1569129496
+    },
+    {
+      "id": 4,
+      "uploader": "Kai-P",
+      "title": "Samsung Foldable",
+      "description": "New model of Samsung Foldable.",
+      "tags": "samsung foldable mobile",
+      "url": "https://www.youtube.com/watch?v=TcMBFSGVi1c&amp;t=2s",
+      "timestamp": 1569129881
+    }
+  ]
+}

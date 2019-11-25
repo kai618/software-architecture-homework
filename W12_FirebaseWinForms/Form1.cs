@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
-namespace W11_RESTfulClient
+namespace W12_FirebaseWinForms
 {
     public partial class VideoManagerForm : Form
     {
-        private const string Uri = "http://videosa.gear.host/api/videos/";
-
         public VideoManagerForm()
         {
             InitializeComponent();
@@ -17,43 +12,38 @@ namespace W11_RESTfulClient
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ReloadTable();
+            new VideoBUS().ListenFirebase(videoGridView);
         }
 
-        private void ReloadTable()
+
+        private async void VideoGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var client = new WebClient();
-            var json = client.DownloadString(Uri);
-            var videos = JsonConvert.DeserializeObject<List<Video>>(json);
-            Console.WriteLine();
-            videoGridView.DataSource = videos;
+            if (videoGridView.SelectedRows.Count <= 0) return;
+
+            var id = int.Parse(videoGridView.SelectedRows[0].Cells["id"].Value.ToString());
+            var video = await new VideoBUS().GetDetails(id);
+            if (video == null) return;
+
+            textBox_id.Text = video.id.ToString();
+            textBox_uploader.Text = video.uploader;
+            textBox_title.Text = video.title;
+            textBox_description.Text = video.description;
+            textBox_tags.Text = video.tags;
+            textBox_url.Text = video.url;
+            textBox_timestamp.Text = video.timestamp.ToString();
         }
 
-        private void VideoGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void Button_search_Click(object sender, EventArgs e)
         {
-            var row = videoGridView.SelectedRows[0];
-            textBox_id.Text = row.Cells["id"].Value.ToString();
-            textBox_uploader.Text = row.Cells["uploader"].Value.ToString();
-            textBox_title.Text = row.Cells["title"].Value.ToString();
-            textBox_description.Text = row.Cells["description"].Value.ToString();
-            textBox_tags.Text = row.Cells["tags"].Value.ToString();
-            textBox_url.Text = row.Cells["url"].Value.ToString();
-            textBox_timestamp.Text = row.Cells["timestamp"].Value.ToString();
-        }
+            //var attribute = GetAttribute(comboBox_Attribute.SelectedIndex);
 
-        private void Button_search_Click(object sender, EventArgs e)
-        {
             var keyword = textBox_keyword.Text.Trim();
-
             if (string.IsNullOrEmpty(keyword)) return;
-
-            var attribute = GetAttribute(comboBox_Attribute.SelectedIndex);
-
-            var client = new WebClient();
-            var json = client.DownloadString(Uri + attribute + "/" + keyword);
-            var videos = JsonConvert.DeserializeObject<List<Video>>(json);
-
-            videoGridView.DataSource = videos;
+            var books = await new VideoBUS().Search(keyword);
+            videoGridView.BeginInvoke(new MethodInvoker(delegate
+            {
+                videoGridView.DataSource = books;
+            })); // set asynchronous data source
         }
 
         private static string GetAttribute(int index)
@@ -69,7 +59,7 @@ namespace W11_RESTfulClient
             }
         }
 
-        private void Button_add_Click(object sender, EventArgs e)
+        private async void Button_add_Click(object sender, EventArgs e)
         {
             if (!CheckValidData()) return;
 
@@ -85,20 +75,16 @@ namespace W11_RESTfulClient
                 url = textBox_url.Text
             };
 
-            var videoJson = JsonConvert.SerializeObject(video);
-            var client = new WebClient {Headers = {[HttpRequestHeader.ContentType] = "application/json"}};
-            var status = client.UploadString(Uri, "POST", videoJson);
-
-            if (status == "true")
+            var status = await new VideoBUS().AddNew(video);
+            if (status)
             {
-                ReloadTable();
                 MessageBox.Show(@"Added!".PadLeft(18, ' '), @"Success");
-            }
+            }else AlertFailed();
 
             Enabled = true;
         }
 
-        private void Button_update_Click(object sender, EventArgs e)
+        private async void Button_update_Click(object sender, EventArgs e)
         {
             if (!CheckValidData()) return;
 
@@ -115,21 +101,17 @@ namespace W11_RESTfulClient
                 tags = textBox_tags.Text,
                 url = textBox_url.Text
             };
+            var status = await new VideoBUS().Update(video);
 
-            var videoJson = JsonConvert.SerializeObject(video);
-            var client = new WebClient {Headers = {[HttpRequestHeader.ContentType] = "application/json"}};
-            var status = client.UploadString(Uri, "PUT", videoJson);
-
-            if (status == "true")
+            if (status)
             {
-                ReloadTable();
                 MessageBox.Show(@"Updated!".PadLeft(18, ' '), @"Success");
-            }
+            }else AlertFailed();
 
             Enabled = true;
         }
 
-        private void Button_delete_Click(object sender, EventArgs e)
+        private async void Button_delete_Click(object sender, EventArgs e)
         {
             if (!CheckValidData()) return;
 
@@ -141,14 +123,13 @@ namespace W11_RESTfulClient
             {
                 var id = int.Parse(textBox_id.Text);
 
-                var client = new WebClient();
-                var status = client.UploadString(Uri + id, "DELETE", "");
+                var status = await new VideoBUS().Delete(id);
 
-                if (status == "true")
+                if (status)
                 {
-                    ReloadTable();
                     MessageBox.Show(@"Deleted!".PadLeft(18, ' '), @"Success");
                 }
+                else AlertFailed();
             }
 
             Enabled = true;
@@ -162,9 +143,14 @@ namespace W11_RESTfulClient
             return status;
         }
 
+        private void AlertFailed()
+        {
+            MessageBox.Show(@"Failed!".PadLeft(25, ' '), @"Error");
+        }
+
         private void ShowList_Click(object sender, EventArgs e)
         {
-            ReloadTable();
+            new VideoBUS().ListenFirebase(videoGridView);
         }
     }
 }
