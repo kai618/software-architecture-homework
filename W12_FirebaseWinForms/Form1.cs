@@ -20,11 +20,11 @@ namespace W12_FirebaseWinForms
         {
             if (videoGridView.SelectedRows.Count <= 0) return;
 
-            var id = int.Parse(videoGridView.SelectedRows[0].Cells["id"].Value.ToString());
+            var id = videoGridView.SelectedRows[0].Cells["id"].Value.ToString();
             var video = await new VideoBUS().GetDetails(id);
             if (video == null) return;
 
-            textBox_id.Text = video.id.ToString();
+            textBox_id.Text = video.id;
             textBox_uploader.Text = video.uploader;
             textBox_title.Text = video.title;
             textBox_description.Text = video.description;
@@ -39,10 +39,10 @@ namespace W12_FirebaseWinForms
 
             var keyword = textBox_keyword.Text.Trim();
             if (string.IsNullOrEmpty(keyword)) return;
-            var books = await new VideoBUS().Search(keyword);
+            var videos = await new VideoBUS().Search(keyword);
             videoGridView.BeginInvoke(new MethodInvoker(delegate
             {
-                videoGridView.DataSource = books;
+                videoGridView.DataSource = videos;
             })); // set asynchronous data source
         }
 
@@ -67,6 +67,7 @@ namespace W12_FirebaseWinForms
 
             var video = new Video
             {
+                id = textBox_id.Text.Trim(),
                 uploader = textBox_uploader.Text,
                 title = textBox_title.Text,
                 description = textBox_description.Text,
@@ -93,7 +94,7 @@ namespace W12_FirebaseWinForms
 
             var video = new Video
             {
-                id = int.Parse(textBox_id.Text),
+                id = textBox_id.Text,
                 uploader = textBox_uploader.Text,
                 title = textBox_title.Text,
                 description = textBox_description.Text,
@@ -121,7 +122,7 @@ namespace W12_FirebaseWinForms
                 MessageBox.Show(@"Are you sure?".PadLeft(38, ' '), @"Confirmation", MessageBoxButtons.YesNo);
             if (userSelect == DialogResult.Yes)
             {
-                var id = int.Parse(textBox_id.Text);
+                var id = textBox_id.Text.Trim();
 
                 var status = await new VideoBUS().Delete(id);
 

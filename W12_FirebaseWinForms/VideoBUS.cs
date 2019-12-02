@@ -25,23 +25,22 @@ namespace W12_FirebaseWinForms
         public async Task<List<Video>> GetAll()
         {
             var videos = new List<Video>();
-            //var fbVideos = await _fb.Child("videos").OnceAsync<Video>();
-            var fbVideos = await _fb.Child("videos").OnceSingleAsync<List<Video>>();
+            var fbVideos = await _fb.Child("videos").OnceAsync<Video>();
             foreach (var video in fbVideos)
             {
-                videos.Add(video);
-                Debug.WriteLine(video.id);
+                videos.Add(video.Object);
+                Debug.WriteLine(video.Object.id);
             }
 
             return videos;
         }
 
-        public async Task<Video> GetDetails(int id)
+        public async Task<Video> GetDetails(string id)
         {
-            var fbVideos = await _fb.Child("videos").OnceSingleAsync<List<Video>>();
+            var fbVideos = await _fb.Child("videos").OnceAsync<Video>();
             foreach (var item in fbVideos)
-                if (item.id == id)
-                    return item;
+                if (item.Object.id == id)
+                    return item.Object;
             return
                 null;
         }
@@ -49,10 +48,10 @@ namespace W12_FirebaseWinForms
         public async Task<List<Video>> Search(string keyword)
         {
             var videos = new List<Video>();
-            var fbVideos = await _fb.Child("videos").OnceSingleAsync<List<Video>>();
+            var fbVideos = await _fb.Child("videos").OnceAsync<Video>();
             foreach (var item in fbVideos)
-                if (item.title.Contains(keyword))
-                    videos.Add(item);
+                if (item.Object.title.ToLower().Contains(keyword.ToLower()))
+                    videos.Add(item.Object);
             return videos;
         }
 
@@ -60,8 +59,8 @@ namespace W12_FirebaseWinForms
         {
             try
             {
-                await _fb.Child("videos").PostAsync(video); // auto-generated key
-                //await _fb.Child("videos").Child("B" + video.id).PutAsync(video); // custom key
+                //await _fb.Child("videos").PostAsync(video); // auto-generated key
+                await _fb.Child("videos").Child(video.id).PutAsync(video); // custom key
                 return true;
             }
             catch
@@ -74,9 +73,9 @@ namespace W12_FirebaseWinForms
         {
             try
             {
-                var key = await GetKeyByCode(video.id);
-                if (string.IsNullOrEmpty(key)) return false;
-                await _fb.Child("videos").Child(key).PutAsync(video);
+                var exist = await CheckId(video.id);
+                if (string.IsNullOrEmpty(video.id.ToString()) && !exist) return false;
+                await _fb.Child("videos").Child(video.id.ToString()).PutAsync(video);
                 return true;
             }
             catch
@@ -85,13 +84,13 @@ namespace W12_FirebaseWinForms
             }
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<bool> Delete(string id)
         {
             try
             {
-                var key = await GetKeyByCode(id);
-                if (string.IsNullOrEmpty(key)) return false;
-                await _fb.Child("videos").Child(key).DeleteAsync();
+                var exist = await CheckId(id);
+                if (string.IsNullOrEmpty(id) && !exist) return false;
+                await _fb.Child("videos").Child(id).DeleteAsync();
                 return true;
             }
             catch
@@ -100,13 +99,13 @@ namespace W12_FirebaseWinForms
             }
         }
 
-        private async Task<string> GetKeyByCode(int id)
+        private async Task<bool> CheckId(string id)
         {
             var fbVideos = await _fb.Child("videos").OnceAsync<Video>();
             foreach (var item in fbVideos)
                 if (item.Object.id == id)
-                    return item.Key;
-            return null;
+                    return true;
+            return false;
         }
     }
 }

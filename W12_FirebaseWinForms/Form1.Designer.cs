@@ -143,7 +143,6 @@ namespace W12_FirebaseWinForms
             this.comboBox_Attribute.Name = "comboBox_Attribute";
             this.comboBox_Attribute.Size = new System.Drawing.Size(167, 28);
             this.comboBox_Attribute.TabIndex = 3;
-            this.comboBox_Attribute.SelectedIndex = 2;
             // 
             // button_search
             // 
@@ -342,7 +341,6 @@ namespace W12_FirebaseWinForms
             this.textBox_id.Location = new System.Drawing.Point(127, 47);
             this.textBox_id.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_id.Name = "textBox_id";
-            this.textBox_id.ReadOnly = true;
             this.textBox_id.Size = new System.Drawing.Size(115, 26);
             this.textBox_id.TabIndex = 0;
             // 
