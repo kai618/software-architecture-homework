@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W11_RESTfulClient", "W11_RE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W12_FirebaseWinForms", "W12_FirebaseWinForms\W12_FirebaseWinForms.csproj", "{939CA647-AD67-4E6F-9867-3EAA933FA58F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W14_MVC5", "W14_MVC5\W14_MVC5.csproj", "{D064D727-AAD1-4354-AC5E-C04C22AAD47A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{939CA647-AD67-4E6F-9867-3EAA933FA58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{939CA647-AD67-4E6F-9867-3EAA933FA58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{939CA647-AD67-4E6F-9867-3EAA933FA58F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D064D727-AAD1-4354-AC5E-C04C22AAD47A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D064D727-AAD1-4354-AC5E-C04C22AAD47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D064D727-AAD1-4354-AC5E-C04C22AAD47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D064D727-AAD1-4354-AC5E-C04C22AAD47A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
