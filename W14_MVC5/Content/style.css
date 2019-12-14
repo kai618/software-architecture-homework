@@ -18,6 +18,11 @@ body { font-family: sans-serif; }
     user-select: none;
 }
 
+.form-control {
+    display: inline !important;
+}
+
+
 #video-list tr:not(:first-of-type):hover { background-color: skyblue; }
 
 input { font-size: 17px; }
